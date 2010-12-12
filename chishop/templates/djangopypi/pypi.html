@@ -3,20 +3,13 @@
 {% block bread_crumbs_1 %}{% endblock %}
 
 {% block content %}
-<table><thead><th>Updated</th><th>Package</th><th>Summary</th><th>Download</th></ht></thead>
+<table><thead><th>Updated</th><th>Package</th><th>Summary</th></thead>
 <tbody>
 {% for dist in dists %}
     <tr>
         <td>{{ dist.updated|date:"d/m/y" }}
         <td><a href="{{ dist.get_pypi_absolute_url }}"/>{{ dist.name }}</a></td>
         <td>{{ dist.summary|truncatewords:10 }}</td>
-        <td>
-            <ul>
-            {% for release in dist.releases.all %}
-                  <li><a href="{{ release.get_dl_url }}">{{ release.version }}</a></li>
-            {% endfor %}
-            </ul>
-        </td>
     </tr>
 {% endfor %}
 </tbody></table>

@@ -27,8 +27,11 @@
 <li><strong>Author: </strong><a href="mailto:{{ project.author_email }}">{{ project.author }}</a></li>
 <li><strong>Home Page: </strong><a href="{{ project.home_page }}">{{ project.home_page }}</a></li>
 {% comment %}
-<li><strong>Download URL: </strong><a href="{{ project.download_url }}">{{ project.download_url }}</a></li>
+Don't show the download url as a link because Buildout will
+follow that link instead of downloading a release from chishop
 {% endcomment %}
+<li><strong>Download URL: </strong>{{ project.download_url }}</li>
+
 <li><strong>Classifiers: </strong>
     <ul class="plainlist">
     {% for class in project.classifiers.order_by %}
